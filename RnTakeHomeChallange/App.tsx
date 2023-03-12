@@ -1,21 +1,13 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {LoginScreen} from './src/Screens';
-
-const Stack = createStackNavigator();
+import {Provider} from 'react-redux';
+import AppNavigator from './src/Navigators/AppNavigator';
+import {store} from './src/Store/store';
 
 function App(): JSX.Element {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
   );
 }
 

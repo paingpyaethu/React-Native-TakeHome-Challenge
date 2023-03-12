@@ -8,11 +8,14 @@ const CustomInput: React.FC<InputProps> = ({
   IsSecureText,
   keyboardType,
   placeholder,
+  style,
+  value,
 }) => {
   return (
     <View>
       <TextInput
-        style={styles.input}
+        style={[styles.input, style]}
+        value={value}
         onChangeText={onChangeText}
         secureTextEntry={IsSecureText}
         keyboardType={keyboardType}

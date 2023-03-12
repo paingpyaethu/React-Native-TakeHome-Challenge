@@ -7,6 +7,8 @@ export interface InputProps {
   IsSecureText?: boolean | undefined;
   keyboardType?: KeyboardTypeOptions | undefined;
   placeholder?: string | undefined;
+  style?: any;
+  value?: string;
 }
 
 export interface CustomButtonProps {

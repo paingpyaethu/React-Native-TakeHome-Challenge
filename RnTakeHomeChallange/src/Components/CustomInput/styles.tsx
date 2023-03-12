@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     height: 50,
     marginBottom: 20,
+    textAlign: 'center',
   },
 });
 
