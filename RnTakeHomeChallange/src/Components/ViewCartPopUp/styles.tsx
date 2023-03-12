@@ -5,8 +5,9 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     bottom: width * 0.08,
-    width: width,
+    width: width * 0.6,
     zIndex: 50,
+    marginLeft: width * 0.2,
   },
   subContainer: {
     backgroundColor: '#2794eb',
@@ -17,7 +18,6 @@ const styles = StyleSheet.create({
 
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
 
   itemsLength: {
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   viewCartTxt: {
     fontSize: width * 0.045,
     color: '#fff',
+    marginLeft: width * 0.1,
   },
   cartTotalTxt: {
     fontSize: width * 0.05,

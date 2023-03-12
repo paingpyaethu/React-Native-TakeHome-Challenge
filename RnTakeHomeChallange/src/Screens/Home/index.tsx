@@ -9,14 +9,15 @@ import {
 import {useSelector} from 'react-redux';
 import {CustomInput, ViewCartPopUp} from '../../Components';
 import PokemonCardItem from '../../Components/PokemonCard/PokemonCard';
+import {cartTotalSelector} from '../../Store/selectors';
 import usePokemonTcg from './Hooks/usePokemonTcg';
 import styles from './styles';
 
 const Home = () => {
-  const items = useSelector(state => state.carts.cartData);
-
   const {loading, setLoading, currentPage, itemList, setCurrentPage} =
     usePokemonTcg();
+
+  const total = useSelector(cartTotalSelector);
 
   const _renderFooter = () => {
     return loading ? (
@@ -33,12 +34,12 @@ const Home = () => {
 
   return (
     <>
-      <ViewCartPopUp items={items.length} />
+      <ViewCartPopUp cartTotal={total} />
       <View style={{flex: 1}}>
         <View style={styles.header}>
           <Text style={styles.headerTxt}>TCG Marketplace</Text>
         </View>
-        <ScrollView style={{flex: 1, paddingVerticalx: 20}}>
+        <ScrollView style={{flex: 1, paddingVertical: 20}}>
           <CustomInput placeholder="Name.." onChangeText={() => {}} />
           <View style={styles.dropdownContainer}>
             <View style={styles.dropdown}>

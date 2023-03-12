@@ -1,10 +1,10 @@
+/* eslint-disable react-native/no-inline-styles */
 import {View, Text, Image} from 'react-native';
 import React, {useState} from 'react';
 import styles from './styles';
 import CustomButton from '../CustomButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from '../../Store/slices/cartSlice';
-import ViewCartPopUp from '../ViewCartPopUp';
 
 type ItemProps = {
   name: string;
@@ -31,12 +31,11 @@ const PokemonCardItem = ({
 
   const [isCart, setIsCart] = useState(false);
   const items = useSelector(state => state.carts.cartData);
-  const itemWithId = items.filter(item => item.id === id);
   const dispatch = useDispatch();
 
   const _addItemToCart = () => {
     dispatch(addToCart({id, name, sum, image, stock}));
-    items ? setIsCart(true) : setIsCart(false);
+    // items ? setIsCart(true) : setIsCart(false);
   };
 
   return (

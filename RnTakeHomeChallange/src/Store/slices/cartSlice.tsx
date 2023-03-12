@@ -1,46 +1,65 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-const initialState = {
-  cartData: [],
-};
+const initialState = [];
 
-export const cartSlice = createSlice({
-  name: 'cartSlice',
+const cartSlice = createSlice({
+  name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action) => {
-      state.cartData = [...state.cartData, action.payload];
-    },
-    removeFromCart: (state, action) => {
-      const index = state.cartData.findIndex(
-        item => item.id === action.payload.id,
-      );
+    addToCart(state, {payload}) {
+      //   console.log(payload);
+      //uid is the unique id of the item
+      const {id} = payload;
 
-      let newCart = [...state.cartData];
-
-      if (index >= 0) {
-        newCart.splice(index, 1);
-      } else {
-        console.warn(
-          `Can't remove product (id: ${action.payload.id}) as its not in cart!`,
+      const find = state.find(item => item.id === id);
+      if (find) {
+        return state.map(item =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item,
         );
+      } else {
+        state.push({
+          ...payload,
+          quantity: 1,
+        });
       }
-
-      state.cartData = newCart;
     },
-    clearFromCart: state => {
-      state.cartData = [];
+    increment(state, {payload}) {
+      return state.map(item =>
+        item.id === payload
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item,
+      );
+    },
+    decrement(state, {payload}) {
+      return state.map(item =>
+        item.id === payload
+          ? {
+              ...item,
+              quantity: item.quantity - 1,
+            }
+          : item,
+      );
+    },
+    removeItem: (state, action) => {
+      const itemId = action.payload;
+      return state.filter(item => item.id !== itemId);
+    },
+    clear(state) {
+      return [];
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const {addToCart, removeFromCart, clearFromCart} = cartSlice.actions;
+export const {addToCart, increment, decrement, removeItem, clear} =
+  cartSlice.actions;
+const cartReducer = cartSlice.reducer;
 
-// export const selectCartItemsWithId = (state, id) =>
-//   state.carts.cartData.filter(item => item.id === id);
-
-export const selectCartTotal = state =>
-  state.carts.cartData.reduce((total, item) => (total += item.sum), 0);
-
-export default cartSlice.reducer;
+export default cartReducer;
