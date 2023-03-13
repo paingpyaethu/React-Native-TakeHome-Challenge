@@ -1,14 +1,20 @@
 # React-Native-TakeHome-Challenge
 React-Native-TakeHome-Challenge
 
-download zip file or clone repo.
-npm install or yarn
+Instructions
+*************
+Go to main branch and download zip file or clone repo.
+Npm install or yarn
 
 For IOS
 *******
-go to main folder and cd ios and pod install.
-after that npx react-native run-android for android emulator and npx react-native run-ios fro Xcode
+Go to folder and cd ios and pod install.
+After that npx react-native run-android for android emulator and npx react-native run-ios fro Xcode
 
 For Testing
 ***********
-you need to login with any data to navigate home screen.
+Firstly, you will need to login with username and password to navigate home screen.
+( username - rnhometest )
+( password - password )
+
+If you want to check other update, please change main branch to ppt and download or clone it. 
