@@ -1,21 +1,18 @@
-import {useFocusEffect} from '@react-navigation/native';
-import {useCallback, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {getPokemonApi} from '../../../Api/pokemonTcgApi';
 
 const usePokemonTcg = () => {
   const [loading, setLoading] = useState(false);
   const [itemList, setItemList] = useState([]);
-  const [currentPage, setCurrentPage] = useState(12);
+  const [page, setPage] = useState(12);
 
-  useFocusEffect(
-    useCallback(() => {
-      getItemList();
-    }, []),
-  );
+  useEffect(() => {
+    getItemList();
+  }, [page]);
 
   const getItemList = () => {
     setLoading(true);
-    getPokemonApi({currentPage})
+    getPokemonApi({currentPage: page})
       .then(res => {
         console.log('res?.data::', res?.data);
         setItemList(res?.data);
@@ -25,7 +22,7 @@ const usePokemonTcg = () => {
       });
   };
 
-  return {loading, itemList, setCurrentPage, currentPage, setLoading};
+  return {loading, itemList, setPage, page, setLoading};
 };
 
 export default usePokemonTcg;

@@ -21,6 +21,8 @@ const CustomInput: React.FC<InputProps> = ({
         keyboardType={keyboardType}
         placeholder={placeholder}
         placeholderTextColor={'grey'}
+        autoCorrect={false}
+        autoCapitalize="none"
       />
     </View>
   );
