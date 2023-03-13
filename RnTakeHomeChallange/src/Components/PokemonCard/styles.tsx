@@ -2,10 +2,20 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 const styles = StyleSheet.create({
   item: {
-    flex: 1,
+    // flex: 1,
     marginVertical: 16,
     marginHorizontal: 16,
     paddingBottom: 30,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
   image: {
     width: 300,
@@ -37,6 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 30,
     borderRadius: 30,
+    // marginBottom: 80,
   },
 });
 

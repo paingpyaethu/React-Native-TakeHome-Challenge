@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {CustomInput, MainContainer} from '../../Components';
 import CustomButton from '../../Components/CustomButton';
 import {HOME_SCREEN} from '../../Navigators/RouteName';
@@ -10,8 +10,18 @@ const Login = ({navigation}) => {
   const [password, setPassword] = useState<String>('');
 
   const onSubmit = () => {
-    if (name === '' || password === '') return;
-    navigation.navigate(HOME_SCREEN);
+    if (name === 'rnhometest' && password === 'password') {
+      navigation.navigate(HOME_SCREEN);
+    } else {
+      Alert.alert('Warning', 'Invaild Data', [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    }
   };
   return (
     <MainContainer>
@@ -24,6 +34,17 @@ const Login = ({navigation}) => {
             placeholder="Enter your name"
             onChangeText={val => setName(val)}
             value={name}
+            style={{
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+
+              elevation: 5,
+            }}
           />
           <CustomInput
             IsSecureText={true}
@@ -31,6 +52,17 @@ const Login = ({navigation}) => {
             placeholder="* * * * * * * *"
             onChangeText={val => setPassword(val)}
             value={password}
+            style={{
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+
+              elevation: 5,
+            }}
           />
           <CustomButton
             buttonText="Login"

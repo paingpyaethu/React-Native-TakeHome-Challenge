@@ -21,6 +21,7 @@ const AppNavigator = () => {
             headerShown: false,
           }}
         />
+
         <Stack.Screen
           name={CART_SCREEN}
           component={CartScreen}
